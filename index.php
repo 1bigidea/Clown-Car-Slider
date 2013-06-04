@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Clown Car Slider
+Plugin Name: Lumo Slider
 Plugin URI: http://geek.1bigidea.com/
 Description: Basic slider that uses SVG to load images based on breakpoints
 Version: 1.0
@@ -66,6 +66,14 @@ class onebigidea_ClownCarSlider {
 	 */
 	function init(){
 		$this->register_cpt_lumo_slides();
+
+		add_action('admin_menu', array($this, 'admin_menus') );
+	}
+
+	function admin_menus(){
+		$pagename = 'edit.php?post_type=lumo_slide';
+
+		add_submenu_page($pagename, 'Lumo Slider Settings', 'Settings', 'manage_options', 'lumo-slider-settings', array($this, 'settings_page') );
 	}
 
 	function register_cpt_lumo_slides() {
@@ -107,6 +115,18 @@ class onebigidea_ClownCarSlider {
 		);
 
 		register_post_type( 'lumo_slide', $args );
+	}
+
+	function settings_page(){
+?>
+		<div id="lumo-slider-settings" class="wrap">
+			<div id="icon_card" class="icon32"></div>
+			<h2 id="lumo-slider-page-title">
+				<?php esc_html_e( 'Lumo Slider Settings', 'lumo-slider' ); ?>
+			</h2>
+			</div>
+		</div>
+<?php
 	}
 }
 
