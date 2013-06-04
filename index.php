@@ -65,7 +65,48 @@ class onebigidea_ClownCarSlider {
 	 *	Functions below actually do the work
 	 */
 	function init(){
+		$this->register_cpt_lumo_slides();
+	}
 
+	function register_cpt_lumo_slides() {
+
+		$labels = array(
+			'name' => _x( 'Lumo Slides', 'lumo_slide' ),
+			'singular_name' => _x( 'Lumo Slide', 'lumo_slide' ),
+			'add_new' => _x( 'Add New', 'lumo_slide' ),
+			'add_new_item' => _x( 'Add New Lumo Slide', 'lumo_slide' ),
+			'edit_item' => _x( 'Edit Lumo Slide', 'lumo_slide' ),
+			'new_item' => _x( 'New Lumo Slide', 'lumo_slide' ),
+			'view_item' => _x( 'View Lumo Slide', 'lumo_slide' ),
+			'search_items' => _x( 'Search Lumo Slides', 'lumo_slide' ),
+			'not_found' => _x( 'No lumo slides found', 'lumo_slide' ),
+			'not_found_in_trash' => _x( 'No lumo slides found in Trash', 'lumo_slide' ),
+			'parent_item_colon' => _x( 'Parent Lumo Slide:', 'lumo_slide' ),
+			'menu_name' => _x( 'Lumo Slides', 'lumo_slide' ),
+		);
+
+		$args = array(
+			'labels' => $labels,
+			'hierarchical' => false,
+			'description' => 'Slides for the home page of LUMOback',
+			'supports' => array( 'title', 'editor', 'thumbnail', 'revisions' ),
+
+			'public' => false,
+			'show_ui' => true,
+			'show_in_menu' => true,
+			'menu_position' => 100,
+			'menu_icon' => 'http://lumoback.com/icon.png',
+			'show_in_nav_menus' => false,
+			'publicly_queryable' => false,
+			'exclude_from_search' => true,
+			'has_archive' => false,
+			'query_var' => true,
+			'can_export' => true,
+			'rewrite' => false,
+			'capability_type' => 'post'
+		);
+
+		register_post_type( 'lumo_slide', $args );
 	}
 }
 
