@@ -28,16 +28,16 @@
 	.plusslider-arrows .prev {
 		/* place "prev" arrow to the left of the slider */
 		position: absolute;
-		top: 50%;
-		left: 15px;
+		top: 55%;
+		left: 4%;
 		z-index: 20;
 	}
 
 	.plusslider-arrows .next {
 		/* place "next" arrow to the right of the slider */
 		position: absolute;
-		top: 50%;
-		right: 15px;
+		top: 55%;
+		right: 4%;
 		z-index: 20;
 	}
 
@@ -98,3 +98,23 @@
 	.plusslider-pagination li.current {
 		background-position: 0 -26px;
 	}
+
+/**
+ *	Position the Hero text
+ */
+	.plusslider div.hero {
+		position: absolute;
+		top: 35%;
+		width: 100%;
+		padding-left: 8%;
+	}
+	div.hero p {
+		width: 60%;
+	}
+	div.hero h4 {
+		font-size: 48px;
+		font-weight: 800;
+		color: #999999;
+		text-shadow: 1px 1px 1px rgba(0,0,0,0.7);
+	}
+

@@ -157,7 +157,11 @@ if( class_exists('onebigidea_ClownCarSlider') ) :
 			while( $slides->have_posts() ) : $slides->the_post();
 				$slide_image = get_the_post_thumbnail(get_the_ID(), 'home-slider-image');
 				echo '<li>';
-				echo $slide_image;
+					echo $slide_image;
+					echo '<div class="hero">';
+						echo '<h4 class="hero">'.get_the_title().'</h4>';
+						the_content();
+					echo '</div>';
 				echo '</li>';
 			endwhile;
 			wp_reset_postdata();
