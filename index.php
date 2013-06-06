@@ -26,12 +26,13 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
 class onebigidea_ClownCarSlider {
+
 	private static $_this;
 	var $plugin_slug = "onebigidea_ClownCarSlider";
 	var $plugin_name = "Clown Car Slider";
 	var $plugin_version = "1.0";
 
-	function __construct() {
+	private function __construct() {
 
 		register_activation_hook(   __FILE__, array( __CLASS__, 'activate'   ) );
 		register_deactivation_hook( __FILE__, array( __CLASS__, 'deactivate' ) );
@@ -51,7 +52,7 @@ class onebigidea_ClownCarSlider {
 	function uninstall() {
 		// Delete options here
 	}
-	static function this(){
+	static function get_instance(){
 		// enables external management of filters/actions
 		// http://hardcorewp.com/2012/enabling-action-and-filter-hook-removal-from-class-based-wordpress-plugins/
 		// enables external management of filters/actions
@@ -68,12 +69,27 @@ class onebigidea_ClownCarSlider {
 		$this->register_cpt_lumo_slides();
 
 		add_action('admin_menu', array($this, 'admin_menus') );
+
+		add_action('wp_enqueue_scripts', array($this, 'enqueue') );
+
+		/**
+		 *	Set Custom Main Slider Image size
+		 */
+		add_image_size('home-slider-image', 1600, 600);
 	}
 
 	function admin_menus(){
 		$pagename = 'edit.php?post_type=lumo_slide';
 
 		add_submenu_page($pagename, 'Lumo Slider Settings', 'Settings', 'manage_options', 'lumo-slider-settings', array($this, 'settings_page') );
+	}
+
+	function enqueue(){
+		wp_enqueue_style('lumo-slider-css', plugins_url('css/lumo-slider.css', __FILE__) );
+
+		wp_enqueue_script('jquery');
+		wp_enqueue_script('plusSlider', plugins_url('js/PlusSlider/js/jquery.plusslider-min.js', __FILE__), array('jquery') );
+		wp_enqueue_script('lumo-slider', plugins_url('js/lumo-slider.js', __FILE__), array('jquery', 'plusSlider'));
 	}
 
 	function register_cpt_lumo_slides() {
@@ -129,30 +145,25 @@ class onebigidea_ClownCarSlider {
 <?php
 	}
 }
+onebigidea_ClownCarSlider::get_instance();
 
-if ( ! class_exists( 'Autoload_WP' ) ) {
-	/**
-	 * Generic autoloader for classes named in WordPress coding style.
-	 */
-	class Autoload_WP {
+if( class_exists('onebigidea_ClownCarSlider') ) :
+	function lumo_slider(){
 
-		public $dir = __DIR__;
+		$slides = new Lumo_Slider_Query();
 
-		function __construct( $dir = '' ) {
-
-			if ( ! empty( $dir ) )
-				$this->dir = $dir;
-
-			spl_autoload_register( array( $this, 'spl_autoload_register' ) );
-		}
-
-		function spl_autoload_register( $class_name ) {
-
-			$class_path = $this->dir . '/class-' . strtolower( str_replace( '_', '-', $class_name ) ) . '.php';
-
-			if ( file_exists( $class_path ) )
-				include $class_path;
-		}
+		if( $slides->have_posts() ) :
+			echo '<div id="lumo-slider">';
+			while( $slides->have_posts() ) : $slides->the_post();
+				$slide_image = get_the_post_thumbnail(get_the_ID(), 'home-slider-image');
+				echo '<li>';
+				echo $slide_image;
+				echo '</li>';
+			endwhile;
+			wp_reset_postdata();
+			echo '</div>';
+		endif;
 	}
-}
-new onebigidea_ClownCarSlider();
+endif;
+
+require_once('classes/class-Lumo-Slider-Query.php');
