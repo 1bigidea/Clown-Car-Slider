@@ -1,0 +1,3 @@
+[submodule "js/PlusSlider"]
+	path = js/PlusSlider
+	url = https://github.com/JamyGolden/PlusSlider.git
