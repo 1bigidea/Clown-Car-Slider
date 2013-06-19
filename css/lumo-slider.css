@@ -106,15 +106,21 @@
 		position: absolute;
 		top: 35%;
 		width: 100%;
-		padding-left: 20%;
+		padding-left: 10%;
 	}
 	div.hero p {
-		width: 60%;
+		width: 50%;
 	}
 	div.hero h4 {
 		font-size: 48px;
 		font-weight: 800;
 		color: #505050;
 		text-shadow: 1px 1px 1px rgba(0,0,0,0.7);
+	}
+
+	div.hero h5 {
+		font-size: 30px;
+		font-weight: lighter;
+		width: 50%;
 	}
 
