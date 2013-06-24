@@ -1,3 +1,8 @@
+#main-header:after {content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0;}
+html[xmlns] #main-header {display: block;}
+* html #main-header {height: 1%;}
+#main-header { overflow: hidden; }
+
 /* Essential slider functionality (never changes) */
 	.plusslider {
 /*		overflow: hidden; */
@@ -123,10 +128,11 @@
 		position: absolute;
 		top: 35%;
 		left: 10%;
+		width: 85%;
 	}
 
-	.lumo-slide .content-wrapper {
-		margin: 0 7.5%;
+	.lumo-slide .content-wrapper > * {
+		width: 55%;
 	}
 
 	.lumo-slide div.hero h4 {
@@ -134,21 +140,28 @@
 		font-weight: 800;
 		color: #505050;
 		text-shadow: 1px 1px 1px rgba(0,0,0,0.7);
+		width: 100%;
 	}
 
 	.lumo-slide div.hero h5 {
 		font-size: 30px;
 		font-weight: lighter;
-		width: 50%;
 	}
 
-	.lumo-slide div.hero p {
-		width: 50%;
+@media only screen and (max-width: 960px ){
+	.lumo-slide .content-wrapper > * {
+		width: 100%;
 	}
+
+	.lumo-slide div.content-wrapper {
+		padding: 0 5%;
+	}
+
+}
 
 @media only screen and ( min-width: 480px ) and ( max-width: 960px ) {
 	section.slider {
-		margin-bottom: 30%;
+		margin-bottom: 20%;
 	}
 	.lumo-slide .wrapper {
 		width: 728px;
@@ -156,28 +169,26 @@
 	}
 	.lumo-slide div.hero {
 		top: 70%;
-		width: 100%;
 		left: 0;
+		width: 100%;
 	}
-	.lumo-slide div.content-wrapper {
-		padding: 0 10%;
-	}
-
 	.lumo-slide div.hero h4 {
-		font-size: 44px;
+		font-size: 32px;
 		text-shadow: 1px 1px 1px rgba(0,0,0,0.7);
 		letter-spacing: 0;
-		padding-bottom: 5%;
+		padding-bottom: 10%;
 	}
 
-	.lumo-slide div.hero p {
-		width: 100%;
+	.lumo-slide div.hero h5 {
+		font-size: 24px;
+		font-weight: lighter;
 	}
+
 }
 
 @media only screen and ( max-width: 479px ) {
 	section.slider {
-		margin-bottom: 70%;
+		margin-bottom: 50%;
 	}
 	.lumo-slide div.hero {
 		top: 100%;
@@ -191,8 +202,9 @@
 		letter-spacing: 0;
 	}
 
-	.lumo-slide div.hero p {
-		width: 100%;
+	.lumo-slide div.hero h5 {
+		font-size: 18px;
+		font-weight: lighter;
 	}
 
 }
