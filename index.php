@@ -147,22 +147,52 @@ class onebigidea_ClownCarSlider {
 }
 onebigidea_ClownCarSlider::get_instance();
 
-if( class_exists('onebigidea_ClownCarSlider') ) :
+if( class_exists('onebigidea_ClownCarSlider') && false ) :
 	function lumo_slider(){
 
+		echo '<div id="lumo-slider">';
+		for($i=1;$i<=3;$i++) {
+			echo '<li>';
+?>
+				<object data='/wp-content/uploads/lumo-slides/slide<?php echo $i; ?>.svg' type="image/svg+xml">
+				  <!--[if lte IE 8]>
+				  <img src="//wp-content/uploads/lumo-slides/slide<?php echo $i; ?>/image<?php echo $i; ?>_768.jpg" alt="Fallback for IE">
+				  <![endif]-->
+				</object>
+<?php
+				echo '<div class="hero">';
+					echo '<h4 class="hero">'.get_the_title().'</h4>';
+					the_content();
+				echo '</div>';
+			echo '</li>';
+		}
+		echo '</div>';
+	}
+endif;
+
+if( class_exists('onebigidea_ClownCarSlider') && true ) :
+	function lumo_slider(){
+	// based on this concept - http://wellcaffeinated.net/articles/2012/12/10/very-simple-css-only-proportional-resizing-of-elements/
 		$slides = new Lumo_Slider_Query();
 
 		if( $slides->have_posts() ) :
+			$display = "";
 			echo '<div id="lumo-slider">';
 			while( $slides->have_posts() ) : $slides->the_post();
 				$slide_image = get_the_post_thumbnail(get_the_ID(), 'home-slider-image');
-				echo '<li>';
-					echo $slide_image;
-					echo '<div class="hero">';
-						echo '<h4 class="hero">'.get_the_title().'</h4>';
-						the_content();
+				$slide_image_url = wp_get_attachment_url( get_post_thumbnail_id($post->ID, 'thumbnail') );
+				echo '<li class="lumo-slide" style="background-image: url('.$slide_image_url.');'.$display.'">';
+					echo '<div class="wrapper">';
+					//echo $slide_image;
+						echo '<div class="hero">';
+							echo '<div class="content-wrapper">';
+								echo '<h4 class="hero">'.get_the_title().'</h4>';
+								the_content();
+							echo '</div>';
+						echo '</div>';
 					echo '</div>';
 				echo '</li>';
+				$display = " display:none; ";
 			endwhile;
 			wp_reset_postdata();
 			echo '</div>';

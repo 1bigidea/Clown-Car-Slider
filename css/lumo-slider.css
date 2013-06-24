@@ -1,5 +1,9 @@
 /* Essential slider functionality (never changes) */
-	.plusslider { overflow: hidden; position: relative; }
+	.plusslider {
+/*		overflow: hidden; */
+		position: relative;
+		width: 100%;
+	}
 	.plusslider-container { position: relative; }
 	.plusslider .child { float: left; }
 	.plustype-fader .child { display: none; position: absolute; left: 0; top: 0; } /* only applies to fader type (not slider) */
@@ -100,27 +104,95 @@
 	}
 
 /**
+ *	Setup Slide dimensions
+ */
+	.lumo-slide {
+		width: 100%;
+		position: relative;
+		background-size: cover;
+	}
+		.lumo-slide .wrapper {
+			padding-top: 37.5%;
+		}
+
+
+/**
  *	Position the Hero text
  */
-	.plusslider div.hero {
+	.lumo-slide div.hero {
 		position: absolute;
 		top: 35%;
-		width: 100%;
-		padding-left: 10%;
+		left: 10%;
 	}
-	div.hero p {
-		width: 50%;
+
+	.lumo-slide .content-wrapper {
+		margin: 0 7.5%;
 	}
-	div.hero h4 {
+
+	.lumo-slide div.hero h4 {
 		font-size: 48px;
 		font-weight: 800;
 		color: #505050;
 		text-shadow: 1px 1px 1px rgba(0,0,0,0.7);
 	}
 
-	div.hero h5 {
+	.lumo-slide div.hero h5 {
 		font-size: 30px;
 		font-weight: lighter;
 		width: 50%;
 	}
 
+	.lumo-slide div.hero p {
+		width: 50%;
+	}
+
+@media only screen and ( min-width: 480px ) and ( max-width: 960px ) {
+	section.slider {
+		margin-bottom: 30%;
+	}
+	.lumo-slide .wrapper {
+		width: 728px;
+		margin: 0 auto;
+	}
+	.lumo-slide div.hero {
+		top: 70%;
+		width: 100%;
+		left: 0;
+	}
+	.lumo-slide div.content-wrapper {
+		padding: 0 10%;
+	}
+
+	.lumo-slide div.hero h4 {
+		font-size: 44px;
+		text-shadow: 1px 1px 1px rgba(0,0,0,0.7);
+		letter-spacing: 0;
+		padding-bottom: 5%;
+	}
+
+	.lumo-slide div.hero p {
+		width: 100%;
+	}
+}
+
+@media only screen and ( max-width: 479px ) {
+	section.slider {
+		margin-bottom: 70%;
+	}
+	.lumo-slide div.hero {
+		top: 100%;
+		left: 0;
+		width: 100%;
+	}
+
+	.lumo-slide div.hero h4 {
+		font-size: 24px;
+		text-shadow: 0px 0px 0px rgba(0,0,0,0.7);
+		letter-spacing: 0;
+	}
+
+	.lumo-slide div.hero p {
+		width: 100%;
+	}
+
+}
