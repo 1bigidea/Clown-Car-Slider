@@ -127,7 +127,6 @@ html[xmlns] #main-header {display: block;}
  */
 	.lumo-slide div.hero-placeholder{
 		padding-top: 0;
-		background-color: yellow;
 	}
 	.lumo-slide div.hero {
 		position: absolute;
