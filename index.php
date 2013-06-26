@@ -177,25 +177,24 @@ if( class_exists('onebigidea_ClownCarSlider') && true ) :
 
 		if( $slides->have_posts() ) :
 			$display = "";
-			echo '<div id="lumo-slider">';
+			echo '<ul id="lumo-slider">';
 			while( $slides->have_posts() ) : $slides->the_post();
 				$slide_image = get_the_post_thumbnail(get_the_ID(), 'home-slider-image');
+				$slide_image = preg_replace('/width="\d+" height="\d+"/', 'height="100%"', $slide_image);
+
 				$slide_image_url = wp_get_attachment_url( get_post_thumbnail_id($post->ID, 'thumbnail') );
-				echo '<li class="lumo-slide" style="background-image: url('.$slide_image_url.');'.$display.'">';
-					echo '<div class="wrapper">';
-					//echo $slide_image;
-						echo '<div class="hero">';
-							echo '<div class="content-wrapper">';
-								echo '<h4 class="hero">'.get_the_title().'</h4>';
-								the_content();
-							echo '</div>';
-						echo '</div>';
+				echo '<li class="lumo-slide">';
+					echo $slide_image;
+					echo '<div class="hero-placeholder"></div>';
+					echo '<div class="hero">';
+							echo '<h4 class="hero">'.get_the_title().'</h4>';
+							the_content();
 					echo '</div>';
 				echo '</li>';
 				$display = " display:none; ";
 			endwhile;
 			wp_reset_postdata();
-			echo '</div>';
+			echo '</ul>';
 		endif;
 	}
 endif;

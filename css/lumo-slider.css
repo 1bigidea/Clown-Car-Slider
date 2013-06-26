@@ -1,11 +1,13 @@
+/*
 #main-header:after {content: "."; display: block; clear: both; visibility: hidden; line-height: 0; height: 0;}
 html[xmlns] #main-header {display: block;}
 * html #main-header {height: 1%;}
-#main-header { overflow: hidden; }
+#main-header section.slider { overflow: hidden; }
+*/
 
 /* Essential slider functionality (never changes) */
 	.plusslider {
-/*		overflow: hidden; */
+		overflow: hidden;
 		position: relative;
 		width: 100%;
 	}
@@ -111,24 +113,30 @@ html[xmlns] #main-header {display: block;}
 /**
  *	Setup Slide dimensions
  */
+	section.slider{
+		height: 50.6%;
+	}
+
 	.lumo-slide {
 		width: 100%;
 		position: relative;
-		background-size: cover;
 	}
-		.lumo-slide .wrapper {
-			padding-top: 37.5%;
-		}
-
 
 /**
  *	Position the Hero text
  */
+	.lumo-slide div.hero-placeholder{
+		padding-top: 0;
+		background-color: yellow;
+	}
 	.lumo-slide div.hero {
 		position: absolute;
-		top: 35%;
-		left: 10%;
-		width: 85%;
+		top: 0;
+		left: 0;
+
+		width: 550px;
+
+		padding: 15% 0 0 8%;
 	}
 
 	.lumo-slide .content-wrapper > * {
@@ -148,30 +156,82 @@ html[xmlns] #main-header {display: block;}
 		font-weight: lighter;
 	}
 
-@media only screen and (max-width: 960px ){
-	.lumo-slide .content-wrapper > * {
-		width: 100%;
+/*
+@media only screen and (min-width: 961px ){
+
+	.lumo-slide div.hero-placeholder{
+		padding-top: 10%;
 	}
 
-	.lumo-slide div.content-wrapper {
-		padding: 0 5%;
+	.lumo-slide div.hero {
+		padding: 25% 10%;
+		width: 550px;
+	}
+
+}
+*/
+
+@media only screen and ( min-width: 768px ) and ( max-width: 960px ){
+
+	.lumo-slide div.hero-placeholder{
+		padding-top: 0;
+	}
+
+	.lumo-slide div.hero {
+		padding: 15% 10%;
+		width: 55%;
+	}
+
+	.lumo-slide div.hero h4 {
+		font-size: 32px;
+		text-shadow: 1px 1px 1px rgba(0,0,0,0.7);
+		letter-spacing: 0;
+		padding-bottom: 3%;
+	}
+
+	.lumo-slide div.hero h5 {
+		font-size: 24px;
+		font-weight: lighter;
 	}
 
 }
 
-@media only screen and ( min-width: 480px ) and ( max-width: 960px ) {
-	section.slider {
-		margin-bottom: 20%;
+@media only screen and ( min-width: 721px ) and ( max-width: 767px ) {
+
+	.lumo-slide div.hero-placeholder{
+		padding-top: 0;
 	}
-	.lumo-slide .wrapper {
-		width: 728px;
-		margin: 0 auto;
-	}
+
 	.lumo-slide div.hero {
-		top: 70%;
-		left: 0;
-		width: 100%;
+		padding: 10% 10%;
+		width: 55%;
 	}
+
+	.lumo-slide div.hero h4 {
+		font-size: 32px;
+		text-shadow: 1px 1px 1px rgba(0,0,0,0.7);
+		letter-spacing: 0;
+		padding-bottom: 3%;
+	}
+
+	.lumo-slide div.hero h5 {
+		font-size: 24px;
+		font-weight: lighter;
+	}
+
+}
+
+@media only screen and ( min-width: 480px ) and ( max-width: 720px ) {
+
+	.lumo-slide div.hero-placeholder{
+		padding-top: 25%;
+	}
+
+	.lumo-slide div.hero {
+		padding: 25% 10%;
+		width: 75%;
+	}
+
 	.lumo-slide div.hero h4 {
 		font-size: 32px;
 		text-shadow: 1px 1px 1px rgba(0,0,0,0.7);
@@ -187,13 +247,14 @@ html[xmlns] #main-header {display: block;}
 }
 
 @media only screen and ( max-width: 479px ) {
-	section.slider {
-		margin-bottom: 50%;
+
+	.lumo-slide div.hero-placeholder{
+		padding-top: 30%;
 	}
+
 	.lumo-slide div.hero {
-		top: 100%;
-		left: 0;
-		width: 100%;
+		padding: 40% 10%;
+		width: 75%;
 	}
 
 	.lumo-slide div.hero h4 {
