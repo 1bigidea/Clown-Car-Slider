@@ -133,42 +133,32 @@ html[xmlns] #main-header {display: block;}
 		top: 0;
 		left: 0;
 
-		width: 550px;
+		width: 90%;
 
-		padding: 15% 0 0 8%;
+		padding: 15% 0 0 44px;
 	}
 
-	.lumo-slide .content-wrapper > * {
-		width: 55%;
+	.lumo-slide div.hero div {
+		font-size: 30px;
+		font-size: 1.875rem;
+		line-height: 1;
+
+		font-weight: lighter;
+		letter-spacing: -1;
 	}
 
 	.lumo-slide div.hero h4 {
 		font-size: 48px;
+		font-size: 3rem;
+		line-height: 1;
+
 		font-weight: 800;
 		color: #505050;
 		text-shadow: 1px 1px 1px rgba(0,0,0,0.7);
 		width: 100%;
+
+		-webkit-font-smoothing: antialiased;
 	}
-
-	.lumo-slide div.hero h5 {
-		font-size: 30px;
-		font-weight: lighter;
-	}
-
-/*
-@media only screen and (min-width: 961px ){
-
-	.lumo-slide div.hero-placeholder{
-		padding-top: 10%;
-	}
-
-	.lumo-slide div.hero {
-		padding: 25% 10%;
-		width: 550px;
-	}
-
-}
-*/
 
 @media only screen and ( min-width: 768px ) and ( max-width: 960px ){
 
@@ -177,22 +167,43 @@ html[xmlns] #main-header {display: block;}
 	}
 
 	.lumo-slide div.hero {
-		padding: 15% 10%;
-		width: 55%;
+		padding: 15% 20px;
+		width: 90%;
+	}
+
+	.lumo-slide div.hero{
+		font-size: 24px;
+		font-size: 1.5rem;
+		line-height: 1;
 	}
 
 	.lumo-slide div.hero h4 {
 		font-size: 32px;
+		font-size: 2rem;
+		line-height: .75;
+
 		text-shadow: 1px 1px 1px rgba(0,0,0,0.7);
 		letter-spacing: 0;
 		padding-bottom: 3%;
 	}
 
-	.lumo-slide div.hero h5 {
-		font-size: 24px;
-		font-weight: lighter;
+}
+
+@media only screen and ( max-width: 767px ){
+
+	body.et_fullwidth_view .lumo-slide .one_half,
+	body.et_fullwidth_view .lumo-slide .one_third,
+	body.et_fullwidth_view .lumo-slide .two_third,
+	body.et_fullwidth_view .lumo-slide .one_fourth,
+	body.et_fullwidth_view .lumo-slide .three_fourth {
+		float:left; margin-right:4%; position:relative;
 	}
 
+	body.et_fullwidth_view .lumo-slide .one_half { width: 48%; }
+	body.et_fullwidth_view .lumo-slide .one_third { width: 30.66%; }
+	body.et_fullwidth_view .lumo-slide .two_third { width:65.32%; }
+	body.et_fullwidth_view .lumo-slide .one_fourth { width:22%; }
+	body.et_fullwidth_view .lumo-slide .three_fourth { width:74%; }
 }
 
 @media only screen and ( min-width: 721px ) and ( max-width: 767px ) {
@@ -202,20 +213,24 @@ html[xmlns] #main-header {display: block;}
 	}
 
 	.lumo-slide div.hero {
-		padding: 10% 10%;
-		width: 55%;
+		padding: 10% 20px;
+		width: 90%;
+	}
+
+	.lumo-slide div.hero div {
+		font-size: 24px;
+		font-size: 1.5rem;
+		line-height: 1;
 	}
 
 	.lumo-slide div.hero h4 {
 		font-size: 32px;
+		font-size: 2rem;
+		line-height: .75;
+
 		text-shadow: 1px 1px 1px rgba(0,0,0,0.7);
 		letter-spacing: 0;
 		padding-bottom: 3%;
-	}
-
-	.lumo-slide div.hero h5 {
-		font-size: 24px;
-		font-weight: lighter;
 	}
 
 }
@@ -227,20 +242,28 @@ html[xmlns] #main-header {display: block;}
 	}
 
 	.lumo-slide div.hero {
-		padding: 25% 10%;
-		width: 75%;
+		padding: 25% 20px;
+		width: 90%;
+	}
+
+	.lumo-slide div.hero div {
+		font-size: 24px;
+		font-size: 1.5rem;
+		line-height: 1;
 	}
 
 	.lumo-slide div.hero h4 {
 		font-size: 32px;
+		font-size: 2rem;
+		line-height: .75;
+
 		text-shadow: 1px 1px 1px rgba(0,0,0,0.7);
 		letter-spacing: 0;
 		padding-bottom: 10%;
 	}
 
-	.lumo-slide div.hero h5 {
-		font-size: 24px;
-		font-weight: lighter;
+	.lumo-slide a.big-button {
+		padding: 14px 12px;
 	}
 
 }
@@ -248,23 +271,33 @@ html[xmlns] #main-header {display: block;}
 @media only screen and ( max-width: 479px ) {
 
 	.lumo-slide div.hero-placeholder{
-		padding-top: 30%;
+		padding-top: 40%;
 	}
 
 	.lumo-slide div.hero {
-		padding: 40% 10%;
-		width: 75%;
+		padding: 40% 20px;
+		width: 90%;
+	}
+
+	.lumo-slide div.hero div {
+		font-size: 18px;
+		font-size: 1.25rem;
+		line-height: 1.333;
 	}
 
 	.lumo-slide div.hero h4 {
 		font-size: 24px;
+		font-size: 1.5rem;
+		line-height: 1;
+
 		text-shadow: 0px 0px 0px rgba(0,0,0,0.7);
 		letter-spacing: 0;
 	}
 
-	.lumo-slide div.hero h5 {
-		font-size: 18px;
-		font-weight: lighter;
+	.lumo-slide a.big-button {
+		padding: 14px 12px;
+		font-size: 16px;
+		font-size: 1rem;
 	}
 
 }

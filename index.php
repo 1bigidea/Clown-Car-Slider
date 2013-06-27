@@ -183,7 +183,7 @@ if( class_exists('onebigidea_ClownCarSlider') && true ) :
 				$slide_image = preg_replace('/width="\d+" height="\d+"/', 'height="100%"', $slide_image);
 
 				$slide_image_url = wp_get_attachment_url( get_post_thumbnail_id($post->ID, 'thumbnail') );
-				echo '<li class="lumo-slide">';
+				printf( '<li class="lumo-slide" style="%s">', $display);
 					echo $slide_image;
 					echo '<div class="hero-placeholder"></div>';
 					echo '<div class="hero">';
