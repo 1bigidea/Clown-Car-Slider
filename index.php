@@ -68,6 +68,8 @@ class onebigidea_ClownCarSlider {
 	function init(){
 		$this->register_cpt_lumo_slides();
 
+		add_action('admin_head', array($this, 'plugin_header_image') );
+
 		add_action('admin_menu', array($this, 'admin_menus') );
 
 		add_action('wp_enqueue_scripts', array($this, 'enqueue') );
@@ -81,7 +83,7 @@ class onebigidea_ClownCarSlider {
 	function admin_menus(){
 		$pagename = 'edit.php?post_type=lumo_slide';
 
-		add_submenu_page($pagename, 'Lumo Slider Settings', 'Settings', 'manage_options', 'lumo-slider-settings', array($this, 'settings_page') );
+		add_submenu_page($pagename, 'Lumo Slider Settings', 'Settings', 'manage_options', 'lumo-slider-settings', array($this, 'settings_page'), plugins_url('/images/projection-screen-32x32.png', __FILE__) );
 	}
 
 	function enqueue(){
@@ -119,7 +121,7 @@ class onebigidea_ClownCarSlider {
 			'show_ui' => true,
 			'show_in_menu' => true,
 			'menu_position' => 100,
-			'menu_icon' => 'http://lumoback.com/icon.png',
+			'menu_icon' => plugins_url('images/projection-screen-presentation.png', __FILE__),
 			'show_in_nav_menus' => false,
 			'publicly_queryable' => false,
 			'exclude_from_search' => true,
@@ -133,6 +135,20 @@ class onebigidea_ClownCarSlider {
 		register_post_type( 'lumo_slide', $args );
 	}
 
+	// Adds icon to the page head
+	function plugin_header_image() {
+		$post_type = get_current_screen()->post_type;
+
+		if ( 'lumo_slide' != $post_type )
+			return;
+?>
+			 <style type="text/css">
+				.icon32.icon32-posts-lumo_slide {
+				   background: url(<?php echo plugins_url('/images/projection-screen-32x32.png', __FILE__); ?>) !important;
+				}
+			 </style>
+<?php
+	}
 	function settings_page(){
 ?>
 		<div id="lumo-slider-settings" class="wrap">
