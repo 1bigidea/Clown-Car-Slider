@@ -68,7 +68,8 @@ class onebigidea_ClownCarSlider {
 	function init(){
 		$this->register_cpt_lumo_slides();
 
-		add_action('admin_head', array($this, 'plugin_header_image') );
+		add_action( 'admin_head', array($this, 'plugin_header_image') );
+		add_action( 'admin_head', array($this, 'lumo_cpt_icons') );
 
 		add_action('admin_menu', array($this, 'admin_menus') );
 
@@ -78,6 +79,7 @@ class onebigidea_ClownCarSlider {
 		 *	Set Custom Main Slider Image size
 		 */
 		add_image_size('home-slider-image', 1600, 600);
+		add_image_size('home-slider-image-lowrez', 1366, 512);
 	}
 
 	function admin_menus(){
@@ -121,7 +123,6 @@ class onebigidea_ClownCarSlider {
 			'show_ui' => true,
 			'show_in_menu' => true,
 			'menu_position' => 100,
-			'menu_icon' => plugins_url('images/projection-screen-presentation.png', __FILE__),
 			'show_in_nav_menus' => false,
 			'publicly_queryable' => false,
 			'exclude_from_search' => true,
@@ -149,6 +150,20 @@ class onebigidea_ClownCarSlider {
 			 </style>
 <?php
 	}
+	function lumo_cpt_icons() {
+	?>
+		<style type="text/css" media="screen">
+			#menu-posts-lumo_slide .wp-menu-image {
+				background: url(<?php echo plugins_url('images/projection-screen-presentation.png', __FILE__); ?>) no-repeat 6px -17px !important;
+			}
+			#menu-posts-lumo_slide:hover .wp-menu-image,
+			#menu-posts-lumo_slide.wp-has-current-submenu .wp-menu-image {
+				background-position: 6px 7px!important;
+			}
+		</style>
+	<?php
+	}
+
 	function settings_page(){
 ?>
 		<div id="lumo-slider-settings" class="wrap">
@@ -195,11 +210,14 @@ if( class_exists('onebigidea_ClownCarSlider') && true ) :
 			$display = "";
 			echo '<ul id="lumo-slider">';
 			while( $slides->have_posts() ) : $slides->the_post();
-				$slide_image = get_the_post_thumbnail(get_the_ID(), 'home-slider-image');
-				$slide_image = preg_replace('/width="\d+" height="\d+"/', 'height="100%"', $slide_image);
+				$slide_image = get_the_post_thumbnail(get_the_ID(), 'home-slider-image-lowrez');
+				$slide_image_url = wp_get_attachment_url( get_post_thumbnail_id(get_the_ID(), 'home-slider-image') );
 
-				$slide_image_url = wp_get_attachment_url( get_post_thumbnail_id($post->ID, 'thumbnail') );
-				printf( '<li class="lumo-slide" style="%s">', $display);
+				$set_width_fullrez = sprintf('width="100%%" data-fullrez="%s"', esc_url($slide_image_url) );
+
+				$slide_image = preg_replace('/width="\d+" +height="\d+"/', $set_width_fullrez, $slide_image);
+
+				echo '<li class="lumo-slide" style="'.$display.'">';
 					echo $slide_image;
 					echo '<div class="hero-placeholder"></div>';
 					echo '<div class="hero">';
